@@ -1,0 +1,67 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cpp-template-error-decoder"
+version = "0.1.0"
+description = "把 GCC/Clang/MSVC 的 C++ 模板天书报错，用 GLM-5.3-Flash 解码成 3 句人话 + 行号 + 修复 diff 的终端工具。"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "cpp-template-error-decoder contributors" }]
+keywords = [
+    "cpp",
+    "c++",
+    "compiler-error",
+    "templates",
+    "stl",
+    "concepts",
+    "llm",
+    "glm",
+    "zhipu",
+    "cli",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: Chinese (Simplified)",
+    "Operating System :: OS Independent",
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Debuggers",
+]
+dependencies = [
+    "click>=8.1",
+    "rich>=13.3",
+    "zhipuai>=2.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+]
+
+[project.scripts]
+cpp-decode = "cpp_decoder.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/your-name/cpp-template-error-decoder"
+Issues = "https://github.com/your-name/cpp-template-error-decoder/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cpp_decoder"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
